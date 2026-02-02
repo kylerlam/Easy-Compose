@@ -5,9 +5,9 @@
     主流开源应用的 Docker Compose 一键部署集合。
   </p>
   <p>
-    <a href="./README.tw.md">繁體中文</a> | 
+    <a href="./README.md">繁體中文</a> | 
     <b>简体中文</b> | 
-    <a href="./README.md">English</a>
+    <a href="./README.en.md">English</a>
   </p>
 </div>
 

@@ -5,7 +5,7 @@
     One-click Docker Compose deployment collection for popular open-source applications.
   </p>
   <p>
-    <a href="./README.tw.md">繁體中文</a> | 
+    <a href="./README.md">繁體中文</a> | 
     <a href="./README.cn.md">简体中文</a> | 
     <b>English</b>
   </p>
