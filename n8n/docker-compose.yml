@@ -1,0 +1,41 @@
+services:
+  n8n:
+    # 建議生產環境鎖定具體版本，例如 image: docker.n8n.io/n8nio/n8n:1.26.0
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "${PORT_N8N}:5678"
+    environment:
+      - GENERIC_TIMEZONE=${TIMEZONE}
+      - TZ=${TIMEZONE}
+      
+      # Network & Webhook Config
+      - N8N_HOST=${DOMAIN_NAME}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      
+      # Proxy & Security
+      # 如果你的 Nginx 是第一層代理，這裡是 1
+      - N8N_PROXY_HOPS=1
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=${N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS}
+      
+      # [CRITICAL] Data Encryption
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      
+      # Performance
+      - N8N_RUNNERS_ENABLED=${N8N_RUNNERS_ENABLED}
+
+    volumes:
+      - ${PATH_N8N_DATA}:/home/node/.n8n
+    networks:
+      - n8n_net
+
+volumes:
+  n8n_data:
+
+networks:
+  n8n_net:
+    external: true
